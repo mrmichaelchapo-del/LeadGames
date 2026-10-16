@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+  <html lang="en">
+   <head>
+    <meta charset="UTF-8">
+    <title>LeadGames</title>
+    </head>
+<body>
+ <style>
+  #agePopupOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+  }
+  #agePopupOverlay[hidden] { display: none; }
+  #agePopupBox {
+    background: #fff9c4;
+    border: 2px solid #333;
+    border-radius: 12px;
+    max-width: 420px;
+    width: 100%;
+    padding: 24px 20px 20px 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    position: relative;
+    font-family: sans-serif;
+  }
+  #agePopupCloseBtn {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+  }
+</style>
+
+<div id="agePopupOverlay">
+  <div id="agePopupBox">
+    <button id="agePopupCloseBtn" aria-label="Close">×</button>
+    <p style="margin: 0 0 12px 0;"><b>LeadGames</b> is for young adults and older. Check our LeadGames Terms Of Service for more info.</p>
+    <button style="background: greenyellow; border: none; border-radius: 4px; padding: 8px 16px; cursor: pointer; font-weight: bold;" id="agreement">OK, I agree</button>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var overlayEl = document.getElementById("agePopupOverlay");
+    function closePopup() { overlayEl.hidden = true; }
+    document.getElementById("agreement").addEventListener("click", closePopup);
+    document.getElementById("agePopupCloseBtn").addEventListener("click", closePopup);
+    overlayEl.addEventListener("click", function (e) {
+      if (e.target === overlayEl) closePopup();
+    });
+  })();
+</script>
+</body>
+</html>
